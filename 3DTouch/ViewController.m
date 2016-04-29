@@ -7,8 +7,13 @@
 //
 
 #import "ViewController.h"
+#import "TouchedView.h"
 
-@interface ViewController ()<UIViewControllerPreviewingDelegate>
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+
+@interface ViewController ()<UIViewControllerPreviewingDelegate,UITableViewDelegate,UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -38,7 +43,16 @@
         // handle a 3D Touch alternative (long gesture recognizer)
         
     }
+    
+    [self customSubViews];
+    
+    
 }
+- (void)customSubViews{
+    TouchedView * touchView = [[TouchedView alloc]initWithFrame:CGRectMake(0, 20, SCREEN_WIDTH, 100)];
+    [self.view addSubview:touchView];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -57,7 +71,24 @@
         NSLog(@"3DTouch 未知");
     }
 }
+//当然在生命周期内，如果用户有意修改了设备的3D Touch功能，我们还有一个地方来重新检测：
 - (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
     //do something
 }
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 5;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    cell.textLabel.text = [NSString stringWithFormat:@"这是第几%ld个Cell",indexPath.row];
+    return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"你点击了第%ld条项目",indexPath.row);
+}
+
+
+
 @end

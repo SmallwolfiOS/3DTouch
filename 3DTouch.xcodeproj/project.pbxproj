@@ -17,6 +17,7 @@
 		96C62D351C507309004571BB /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 96C62D341C507309004571BB /* icon.png */; };
 		96C62D371C5074D2004571BB /* R2.png in Resources */ = {isa = PBXBuildFile; fileRef = 96C62D361C5074D2004571BB /* R2.png */; };
 		96C62D391C507D1E004571BB /* R3.png in Resources */ = {isa = PBXBuildFile; fileRef = 96C62D381C507D1E004571BB /* R3.png */; };
+		96CF15361CD35B8E000C332E /* TouchedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96CF15351CD35B8E000C332E /* TouchedView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		96C62D341C507309004571BB /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		96C62D361C5074D2004571BB /* R2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = R2.png; sourceTree = "<group>"; };
 		96C62D381C507D1E004571BB /* R3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = R3.png; sourceTree = "<group>"; };
+		96CF15341CD35B8E000C332E /* TouchedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchedView.h; sourceTree = "<group>"; };
+		96CF15351CD35B8E000C332E /* TouchedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchedView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,8 @@
 				96C62D321C5072E9004571BB /* R.png */,
 				96C62D361C5074D2004571BB /* R2.png */,
 				96C62D381C507D1E004571BB /* R3.png */,
+				96CF15341CD35B8E000C332E /* TouchedView.h */,
+				96CF15351CD35B8E000C332E /* TouchedView.m */,
 				9650D33C1C4F52DB00358ACA /* AppDelegate.h */,
 				9650D33D1C4F52DB00358ACA /* AppDelegate.m */,
 				9650D33F1C4F52DB00358ACA /* ViewController.h */,
@@ -263,6 +268,7 @@
 				9650D3411C4F52DB00358ACA /* ViewController.m in Sources */,
 				9650D33E1C4F52DB00358ACA /* AppDelegate.m in Sources */,
 				9650D33B1C4F52DB00358ACA /* main.m in Sources */,
+				96CF15361CD35B8E000C332E /* TouchedView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
