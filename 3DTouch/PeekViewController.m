@@ -18,7 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 //    self.view.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.2];
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 152, 152)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 300, 300)];
     imageView.center = CGPointMake([UIScreen mainScreen].bounds.size.width/2, 150);
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     imageView.image = [UIImage imageNamed:@"R"];
@@ -72,7 +72,7 @@
     NSArray *actions = @[action1, action2, action3];
     NSArray *taps = @[tap1, tap2, tap3];
     UIPreviewActionGroup *group1 = [UIPreviewActionGroup actionGroupWithTitle:@"Action Group" style:UIPreviewActionStyleDefault actions:actions];
-    UIPreviewActionGroup *group2 = [UIPreviewActionGroup actionGroupWithTitle:@"Tips Group" style:UIPreviewActionStyleDefault actions:taps];
+    UIPreviewActionGroup *group2 = [UIPreviewActionGroup actionGroupWithTitle:@"Tips Group" style:UIPreviewActionStyleDestructive actions:taps];
     NSArray *group = @[group1,group2];
     
     return group;
