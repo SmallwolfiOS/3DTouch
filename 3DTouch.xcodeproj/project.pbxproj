@@ -13,6 +13,7 @@
 		9650D3441C4F52DB00358ACA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9650D3421C4F52DB00358ACA /* Main.storyboard */; };
 		9650D3461C4F52DB00358ACA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9650D3451C4F52DB00358ACA /* Assets.xcassets */; };
 		9650D3491C4F52DB00358ACA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9650D3471C4F52DB00358ACA /* LaunchScreen.storyboard */; };
+		9683E0FF1CD83B10000B7DC9 /* PeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9683E0FE1CD83B10000B7DC9 /* PeekViewController.m */; };
 		96C62D331C5072E9004571BB /* R.png in Resources */ = {isa = PBXBuildFile; fileRef = 96C62D321C5072E9004571BB /* R.png */; };
 		96C62D351C507309004571BB /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 96C62D341C507309004571BB /* icon.png */; };
 		96C62D371C5074D2004571BB /* R2.png in Resources */ = {isa = PBXBuildFile; fileRef = 96C62D361C5074D2004571BB /* R2.png */; };
@@ -50,6 +51,8 @@
 		9650D34A1C4F52DB00358ACA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9650D34F1C4F52DB00358ACA /* 3DTouchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 3DTouchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9650D35A1C4F52DB00358ACA /* 3DTouchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 3DTouchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9683E0FD1CD83B10000B7DC9 /* PeekViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeekViewController.h; sourceTree = "<group>"; };
+		9683E0FE1CD83B10000B7DC9 /* PeekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeekViewController.m; sourceTree = "<group>"; };
 		96C62D321C5072E9004571BB /* R.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = R.png; sourceTree = "<group>"; };
 		96C62D341C507309004571BB /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		96C62D361C5074D2004571BB /* R2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = R2.png; sourceTree = "<group>"; };
@@ -104,12 +107,10 @@
 		9650D3381C4F52DB00358ACA /* 3DTouch */ = {
 			isa = PBXGroup;
 			children = (
-				96C62D341C507309004571BB /* icon.png */,
-				96C62D321C5072E9004571BB /* R.png */,
-				96C62D361C5074D2004571BB /* R2.png */,
-				96C62D381C507D1E004571BB /* R3.png */,
 				96CF15341CD35B8E000C332E /* TouchedView.h */,
 				96CF15351CD35B8E000C332E /* TouchedView.m */,
+				9683E0FD1CD83B10000B7DC9 /* PeekViewController.h */,
+				9683E0FE1CD83B10000B7DC9 /* PeekViewController.m */,
 				9650D33C1C4F52DB00358ACA /* AppDelegate.h */,
 				9650D33D1C4F52DB00358ACA /* AppDelegate.m */,
 				9650D33F1C4F52DB00358ACA /* ViewController.h */,
@@ -118,6 +119,10 @@
 				9650D3451C4F52DB00358ACA /* Assets.xcassets */,
 				9650D3471C4F52DB00358ACA /* LaunchScreen.storyboard */,
 				9650D34A1C4F52DB00358ACA /* Info.plist */,
+				96C62D341C507309004571BB /* icon.png */,
+				96C62D321C5072E9004571BB /* R.png */,
+				96C62D361C5074D2004571BB /* R2.png */,
+				96C62D381C507D1E004571BB /* R3.png */,
 				9650D3391C4F52DB00358ACA /* Supporting Files */,
 			);
 			path = 3DTouch;
@@ -267,6 +272,7 @@
 			files = (
 				9650D3411C4F52DB00358ACA /* ViewController.m in Sources */,
 				9650D33E1C4F52DB00358ACA /* AppDelegate.m in Sources */,
+				9683E0FF1CD83B10000B7DC9 /* PeekViewController.m in Sources */,
 				9650D33B1C4F52DB00358ACA /* main.m in Sources */,
 				96CF15361CD35B8E000C332E /* TouchedView.m in Sources */,
 			);

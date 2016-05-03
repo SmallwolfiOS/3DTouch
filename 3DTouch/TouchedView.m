@@ -18,4 +18,24 @@
 }
 */
 
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    UITouch * touch = [touches anyObject];
+    NSLog(@"%f",touch.force);
+    self.backgroundColor = [UIColor colorWithRed:(touch.force / touch.maximumPossibleForce )green:0 blue:1 alpha:1];
+    if (touch.force == touch.maximumPossibleForce)
+    {
+        //20/3
+        NSLog(@"最大值：%f",touch.maximumPossibleForce);
+//        NSLog(@"%f",touch.force);
+    }
+    
+    
+    
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    self.backgroundColor = [UIColor yellowColor];
+}
+
+
 @end

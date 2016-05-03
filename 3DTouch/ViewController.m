@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "TouchedView.h"
+#import "PeekViewController.h"
 
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
@@ -15,12 +16,34 @@
 @interface ViewController ()<UIViewControllerPreviewingDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property (nonatomic,strong) UILabel *label;
+
 @end
 
 @implementation ViewController
+- (void)check3DTouch
+{
+    // 如果开启了3D touch
+    if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable)
+    {
+        [self registerForPreviewingWithDelegate:(id)self sourceView:_label];
+    }
+}
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//    [self check3DTouch];
+//}
+
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection
+{
+    [self check3DTouch];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.hidden = YES;
+    self.view.backgroundColor = [[UIColor grayColor]colorWithAlphaComponent:0.4];
     // Do any additional setup after loading the view, typically from a nib.
     UIApplicationShortcutItem * item = [[UIApplicationShortcutItem alloc]initWithType:@"Boundle identifier" localizedTitle:@"第二个标签" localizedSubtitle:@"subtitle" icon:[UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeFavorite] userInfo:nil];
     UIApplicationShortcutItem * item2 = [[UIApplicationShortcutItem alloc]initWithType:@"Custom Icon" localizedTitle:@"第三个标签" localizedSubtitle:@"详细标题" icon:[UIApplicationShortcutIcon iconWithTemplateImageName:@"R2"] userInfo:nil];
@@ -30,7 +53,7 @@
      *  如果3Dtouch可用，注册代理
      */
     if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
-        [self registerForPreviewingWithDelegate:(id)self sourceView:self.view];
+        [self registerForPreviewingWithDelegate:(id)self sourceView:_label];
         
         NSLog(@"3D Touch is available! Hurra!");
         
@@ -47,12 +70,47 @@
     [self customSubViews];
     
     
+    
+    
+    
+    
+    
 }
 - (void)customSubViews{
-    TouchedView * touchView = [[TouchedView alloc]initWithFrame:CGRectMake(0, 20, SCREEN_WIDTH, 100)];
+    TouchedView * touchView = [[TouchedView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 100)];
+    touchView.backgroundColor = [UIColor yellowColor];
     [self.view addSubview:touchView];
+    
+    
+    _label = [[UILabel alloc] initWithFrame:CGRectMake(10, 300, self.view.frame.size.width - 20, 100)];
+    _label.userInteractionEnabled = YES;
+    _label.textAlignment = NSTextAlignmentCenter;
+    _label.backgroundColor = [UIColor yellowColor];
+    _label.font = [UIFont boldSystemFontOfSize:20];
+    _label.text = @"Peek && Pop";
+    [self.view addSubview:_label];
 }
-
+- (UIViewController *)previewingContext:(id<UIViewControllerPreviewing>)previewingContext viewControllerForLocation:(CGPoint)location
+{
+    previewingContext.sourceRect = _label.frame;
+    //防止重复加入
+    if ([self.presentedViewController isKindOfClass:[PeekViewController class]])
+    {
+        return nil;
+    }
+    else
+    {
+        PeekViewController *peekViewController = [[PeekViewController alloc] init];
+//    peekViewController.view.frame = CGRectMake(0, 0, 320, 170);
+        peekViewController.preferredContentSize = CGSizeMake(0.0, 300);
+//        CGRect rect = CGRectMake(_label.frame.origin.x - 10, _label.frame.origin.y - 10, _label.frame.size.width , _label.frame.size.height + 20);
+        CGRect rect = CGRectMake(20 , -10, SCREEN_WIDTH-60 , _label.frame.size.height + 10);
+//        CGRect rect = CGRectInset(_label.frame, -10, -10);
+        previewingContext.sourceRect = rect;
+        NSLog(@"X:%f, Y:%f",location.x,location.y);
+        return peekViewController;
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -62,19 +120,19 @@
 
 
 #pragma mark - 生命周期
-- (void)viewWillAppear:(BOOL)animated{
-    if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
-        NSLog(@"3DTouch 可以使用");
-    }else if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityUnavailable){
-        NSLog(@"3DTouch 不可使用");
-    }else if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityUnknown){
-        NSLog(@"3DTouch 未知");
-    }
-}
-//当然在生命周期内，如果用户有意修改了设备的3D Touch功能，我们还有一个地方来重新检测：
-- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
-    //do something
-}
+//- (void)viewWillAppear:(BOOL)animated{
+//    if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityAvailable) {
+//        NSLog(@"3DTouch 可以使用");
+//    }else if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityUnavailable){
+//        NSLog(@"3DTouch 不可使用");
+//    }else if (self.traitCollection.forceTouchCapability == UIForceTouchCapabilityUnknown){
+//        NSLog(@"3DTouch 未知");
+//    }
+//}
+////当然在生命周期内，如果用户有意修改了设备的3D Touch功能，我们还有一个地方来重新检测：
+//- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+//    //do something
+//}
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
